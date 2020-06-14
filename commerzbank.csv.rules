@@ -1,0 +1,31 @@
+# commerzbank.csv.rules
+skip
+
+#Buchungstag;Wertstellung;Umsatzart;Buchungstext;Betrag;Währung;Auftraggeberkonto;Bankleitzahl Auftraggeberkonto;IBAN Auftraggeberkonto;Kategorie
+fields date2,date,type,desc,amount,currency,account,blz,iban,cat
+separator ;
+date-format %-d.%-m.%Y
+
+if %amount ^[0,00] 
+ skip
+
+if %currency EUR
+  currency €
+  
+account1  1 Umlaufvermögen:Commerzbank (1800)
+amount %amount
+# description
+description %desc
+
+# if the amount is positive, it's income (a debit)
+if %amount ^[^-]
+ account2 1 Umlaufvermögen:Forderungen aus Lieferungen und Leistungen (1200)
+# if negative, it's an expense (a credit)
+if %amount ^-
+ account2 3 Fremdkapitalkonten:Verbindlichkeiten aus Lieferungen und Leistungen (3300)
+ 
+# sonderfälle
+
+# Paypal is a transit account
+if %desc PayPal
+ account2  1 Umlaufvermögen:Geldtransit (1460)

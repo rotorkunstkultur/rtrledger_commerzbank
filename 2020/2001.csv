@@ -1,0 +1,4 @@
+Buchungstag;Wertstellung;Umsatzart;Buchungstext;Betrag;Währung;Auftraggeberkonto;Bankleitzahl Auftraggeberkonto;IBAN Auftraggeberkonto;Kategorie
+31.01.2020;31.01.2020;Überweisung;"Example";-200,00;EUR;1234;1234;DE123;Unkategorisierte Ausgaben
+31.01.2020;31.01.2020;Lastschrift;"PayPal (Europe) S.a.r.l. et Cie., S .C.A. PP.5570.PP . , Ihr Einkauf";-15,55;EUR;456;456;D456;Unkategorisierte Ausgaben
+ 
