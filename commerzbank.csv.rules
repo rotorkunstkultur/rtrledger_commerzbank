@@ -24,8 +24,6 @@ if %amount ^[^-]
 if %amount ^-
  account2 3 Fremdkapitalkonten:Verbindlichkeiten aus Lieferungen und Leistungen (3300)
  
-# sonderfälle
+include ../common.csv.rules
+include commerzbank-custom.csv.rules
 
-# Paypal is a transit account
-if %desc PayPal
- account2  1 Umlaufvermögen:Geldtransit (1460)
